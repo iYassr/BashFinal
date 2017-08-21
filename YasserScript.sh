@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #Yasser ALdosari
 #this script works on Ubuntu.
 #this function is to display the passwd file in a human readable way
@@ -78,31 +78,34 @@ if [ $(id -u) -ne 0 ]; then
 else 
    echo You are using root, good
 fi
-# man page of the script
-echo Enter 1 to display the passwd file in a human readable way
-echo Enter 2 to display and log the list of procesesses, and kill some of them
-echo Enter 3 to display what distribution you are using and the CPU architicture
+while [[ true ]]; do
+	# man page of the script
+	echo Enter 1 to display the passwd file in a human readable way
+	echo Enter 2 to display and log the list of procesesses, and kill some of them
+	echo Enter 3 to display what distribution you are using and the CPU architicture
+	echo Enter 4 to quit the program
+	echo you can use the first argument to select the number directly
 
-echo you can use the first argument to select the number directly
 
+	# the first arguement can be used to pass input into the switch
+	if [ $# -eq 0 ]; then
+		read -p "enter the script you want to run.. " num
+	else 
+	 	num=$1
+	fi 
 
-# the first arguement can be used to pass input into the switch
-if [ $# -eq 0 ]; then
-	read -p "enter the script you want to run.. " num
-else 
- 	num=$1
-fi 
-
-#to choose what function to call
-case $num in
-1) dispPasswd $@
-;; 
-2) getProcAll
-;;
-3) checkOS
-;;
-esac
- 
+	#to choose what function to call
+	case $num in
+	1) dispPasswd $@
+	;; 
+	2) getProcAll
+	;;
+	3) checkOS
+	;;
+	4) break
+	;;
+	esac
+done 
 }
 
 main $@
