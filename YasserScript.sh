@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 #Yasser ALdosari
+#this script works on Ubuntu.
 #this function is to display the passwd file in a human readable way
 dispPasswd(){
 #space 
