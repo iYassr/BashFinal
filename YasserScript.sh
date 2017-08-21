@@ -34,7 +34,7 @@ echo -e "\n"
 	ps -ef >> /var/log/getproc.txt
 	echo $(ps -ef)
 	ps -ef
-	read -p "Enter the { name OR the number } of the process you want to kill " pn
+	read -p "Enter the { name OR the number } of the process you want to kill:" pn
 #to verify the input whether int to string, to decide which command to use
 	if [ $pn -eq $pn ] 2>\dev\null; then
 		kill $pn
@@ -71,25 +71,27 @@ checkOS(){
 
 main(){
 
-echo Welcome man YASSER script
+echo -e "\nWelcome man YASSER script"
 #verify if running as sudo or not
 if [ $(id -u) -ne 0 ]; then 
-   echo please run as root to utilize this AWESOME script
+   echo "please run as root to utilize this AWESOME script"
+	exit
 else 
    echo You are using root, good
 fi
 while [[ true ]]; do
 	# man page of the script
-	echo Enter 1 to display the passwd file in a human readable way
-	echo Enter 2 to display and log the list of procesesses, and kill some of them
-	echo Enter 3 to display what distribution you are using and the CPU architicture
-	echo Enter 4 to quit the program
-	echo you can use the first argument to select the number directly
+	echo -e "\n##################### Dashboard ##################### "
+	echo "Enter 1 to display the passwd file in a human readable way"
+	echo "Enter 2 to display and log the list of procesesses, and kill some of them"
+	echo "Enter 3 to display what distribution you are using and the CPU architicture"
+	echo "Enter 4 to quit the program"
+	echo -e "you can use the first argument to select the number directly\n"
 
 
 	# the first arguement can be used to pass input into the switch
 	if [ $# -eq 0 ]; then
-		read -p "enter the script you want to run.. " num
+		read -p "Enter the script you want to run: " num
 	else 
 	 	num=$1
 	fi 
